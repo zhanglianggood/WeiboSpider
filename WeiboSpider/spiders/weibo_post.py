@@ -24,15 +24,16 @@ class WeiboPostSpider(scrapy.Spider):
         browser.get("http://www.renren.com/")
         time.sleep(30)
         elem_user = browser.find_element_by_xpath('//input[@id="email"]')
-        elem_user.send_keys('email')
+        elem_user.send_keys('18910376591')
         elem_pwd = browser.find_element_by_xpath('//input[@id="password"]')
-        elem_pwd.send_keys('password')
+        elem_pwd.send_keys('56861185090')
         commit = browser.find_element_by_xpath('//input[@id="login"]')
         commit.click()
         time.sleep(20)
         # 人人网，中国领先的实名制SNS社交网络。加入人人网，找到老同学，结识新朋友。
         if "人人网 - 新用户76591" in browser.title:
             self.cookies = browser.get_cookies()
+            browser.close()
         else:
             raise Exception("获取cookies失败")
 
